@@ -1,0 +1,117 @@
+package com.hcltech.DAY2ASSIGNMENTS;
+
+class Company
+{
+	private int CompId;
+	private String name;
+	private String HO;
+	private String CEO;
+	public int getCompId() {
+		return CompId;
+	}
+	public void setCompId(int compId) {
+		CompId = compId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getHO() {
+		return HO;
+	}
+	public void setHO(String hO) {
+		HO = hO;
+	}
+	public String getCEO() {
+		return CEO;
+	}
+	public void setCEO(String cEO) {
+		CEO = cEO;
+	}
+	
+	public Company()
+	{
+		super();
+	}
+	
+	
+	public Company(int compId, String name, String hO, String cEO) {
+		super();
+		CompId = compId;
+		this.name = name;
+		HO = hO;
+		CEO = cEO;
+	}
+	
+	public void displayDetails()
+	{
+		System.out.println("Company Id:"+CompId);
+		System.out.println("Company name:"+name);
+		System.out.println("Company HO:"+HO);
+		System.out.println("Company CEO"+CEO);
+	}
+}
+
+class BranchOffices extends Company
+{
+	private int BrId;
+	private String location;
+	private String dept;
+	public int getBrId() {
+		return BrId;
+	}
+	public void setBrId(int brId) {
+		BrId = brId;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public String getDept() {
+		return dept;
+	}
+	public void setDept(String dept) {
+		this.dept = dept;
+	}
+	public BranchOffices(int compId, String name, String hO, String cEO,int brId, String location, String dept) {
+		super(compId,name,hO,cEO);
+		BrId = brId;
+		this.location = location;
+		this.dept = dept;
+	}
+	@Override
+	public void displayDetails()
+	{
+		super.displayDetails();
+		System.out.println("Branch Id:"+BrId);
+		System.out.println("Location :"+location);
+		System.out.println("Department :"+dept);
+		System.out.println();
+	}
+}
+public class Solution5 
+{
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Company bo1= new BranchOffices(1,"ABC","Chennai","Kiran",402,"Mumbai","Technology");
+		Company bo2= new BranchOffices(2,"DEF","Chennai","Geetha",201,"Hyderabad","Marketing");
+		Company bo3= new BranchOffices(3,"GHI","Chennai","Ashsish",501,"delhi","medical");
+		Company bo4= new BranchOffices(4,"JKL","Chennai","Ahigna",405,"kokota","technology");
+		Company bo5= new BranchOffices(5,"MNO","Chennai","Swetha",409,"kerala","Technology");
+
+		bo1.displayDetails();
+		bo2.displayDetails();
+		bo3.displayDetails();
+		bo4.displayDetails();
+		bo5.displayDetails();
+		
+
+	}
+
+}
+

@@ -1,0 +1,84 @@
+package com.hcltech.DAY2ASSIGNMENTS;
+class Customer
+{
+	private String firstName;
+	private String lastName;
+	Account acc;
+	public String getFirtsName() {
+		return firstName;
+	}
+	public void setFirtsName(String firtsName) {
+		this.firstName = firtsName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public Account getAcc() {
+		return acc;
+	}
+	public void setAcc(Account acc) {
+		this.acc = acc;
+	}
+	public Customer(String firtsName, String lastName,double balance) {
+		super();
+		this.firstName = firtsName;
+		this.lastName = lastName;
+		this.acc=new Account(balance);
+	}
+	
+	public void displayDetails()
+	{
+		System.out.println("First name:"+ firstName);
+		System.out.println("Last Name :"+ lastName);
+		System.out.println("Balance:"+acc.getBalance());
+	}
+}
+
+
+class Account
+{
+	private double balance;
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public Account(double balance) {
+		super();
+		this.balance = balance;
+	}
+	
+	public void deposit(double amnt)
+	{
+		double deposit =balance+amnt;
+		System.out.println("Amount after Deposit:"+ deposit);
+	}
+	
+	public void withdraw(double amnt)
+	{
+		balance=balance-amnt;
+		System.out.println("Anount withdrawn:"+balance);
+	}
+}
+public class Solution6 
+{
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Customer customer = new Customer("ravi","kumar",5000);
+		Account ac= new Account(5000);
+		customer.displayDetails();
+		ac.deposit(500);
+		ac.withdraw(100);
+		ac.getBalance();
+	}
+
+}
+

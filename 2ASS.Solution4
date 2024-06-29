@@ -1,0 +1,119 @@
+package com.hcltech.DAY2ASSIGNMENTS;
+
+class Employee
+{
+	private int Empno;
+	private String ename;
+	private String address;
+	private long contactNo;
+	
+	Employee()
+	{
+		super();
+	}
+	
+	public String getEname() {
+		return ename;
+	}
+
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public long getContactNo() {
+		return contactNo;
+	}
+
+	public void setContactNo(long contactNo) {
+		this.contactNo = contactNo;
+	}
+
+	Employee(int Empno, String ename, String  address, long contactNO)
+	{
+		this.Empno=Empno;
+		this.ename= ename;
+		this.address=address;
+		this.contactNo= contactNO;
+	}
+
+	public int getEmpno() {
+		return Empno;
+	}
+
+	public void setEmpno(int empno) {
+		Empno = empno;
+	}
+	
+	public void displayDetails()
+	{
+		System.out.println("Employee Details");
+		System.out.println("Employee No:"+Empno);
+		System.out.println("Employee Name:"+ename);
+		System.out.println("Employee Address:"+address);
+		System.out.println("Employee Contact Number:"+contactNo);
+		System.out.println();
+	}
+}
+
+class Manager extends Employee
+{
+	private int deptNO;
+	private int noOfreportees;
+	
+	Manager()
+	{
+		super();
+	}
+	
+	Manager(int deptNO, int noOfreportees)
+	{
+		//super(Empno,ename,address,contactNO);
+		this.deptNO=deptNO;
+		this.noOfreportees= noOfreportees;
+	}
+	
+	@Override
+	public void displayDetails()
+	{
+		System.out.println("Manager details");
+		System.out.println("Department Number:"+deptNO);
+		System.out.println("Number of reportees:"+noOfreportees);
+		System.out.println();
+	}
+	
+}
+public class Solution4 
+{
+	public static void main(String[] args)
+	{
+		Employee e1= new Employee(1,"Rahul","Chennai",1234567809);
+		Employee e2= new Employee(2,"Deepika","Hyderabad",234567891);
+		Employee e3= new Employee(3,"Geetha","Delhi",243561763);
+		Employee e4= new Employee(4,"Ajay","Hyderabad",763489253);
+		Employee e5= new Employee(5,"Leela","Bengaluru",967856348);
+		
+		Manager m1= new Manager(101,5);
+		Manager m2= new Manager(201,3);
+		
+		e1.displayDetails();
+		e2.displayDetails();
+		e3.displayDetails();
+		e4.displayDetails();
+		e5.displayDetails();
+		
+		m1.displayDetails();
+		m2.displayDetails();
+		
+		
+	}
+
+}
+

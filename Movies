@@ -1,0 +1,122 @@
+package com.hcltech.DAY2ASSIGNMENTS;
+
+import java.util.Objects;
+
+public class Movies
+{
+	//properties
+	private String MPArating;
+	private int idNumber;
+	private String movieTitle;
+	
+	 Movies()
+	{
+		super();
+		
+	}
+	
+	public String getMPArating() {
+		return MPArating;
+	}
+	public void setMPArating(String mPArating) {
+		MPArating = mPArating;
+	}
+	public int getIdNumber() {
+		return idNumber;
+	}
+	public void setIdNumber(int idNumber) {
+		this.idNumber = idNumber;
+	}
+	public String getMovieTitle() {
+		return movieTitle;
+	}
+	public void setMovieTitle(String movieTitle) {
+		this.movieTitle = movieTitle;
+	}
+	
+	public Movies(String mPArating2 , int idNumber, String movieTitle)
+	{
+		super();
+		this.MPArating=mPArating2;
+		this.idNumber=idNumber;
+		this.movieTitle=movieTitle;
+	}
+	
+	public double calcLateFees(int noOfdays)
+	{
+		return 2.0*noOfdays;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Movies other = (Movies) obj;
+		return Objects.equals(MPArating, other.MPArating) && idNumber == other.idNumber
+				&& Objects.equals(movieTitle, other.movieTitle);
+	}
+	
+}
+
+ class Action extends Movies
+{
+	 public Action()
+	 {
+		 super();
+	 }
+
+	 public Action(String MPArating, int idNumber,String Title) 
+	 {
+		 super(MPArating, idNumber,Title);
+	 }
+	 
+	 public double calcLateFees(int days)
+	 {
+		 return 3.0*days;
+	 }
+	 
+	 
+	 
+	
+}
+
+class Comedy extends Movies
+{
+	public Comedy()
+	{
+		super();
+	}
+	
+	 public Comedy(String MPArating, int idNumber, String Title)
+	 {
+		 super(MPArating,idNumber,Title);
+	 }
+	 
+	 public double calcLateFees(int days)
+	 {
+		 return 2.5*days;
+	 }
+}
+class Drama extends Movies
+{
+	public Drama()
+	{
+		super();
+	}
+	
+	 public Drama(String MPArating, int idNumber, String Title)
+	 {
+		 super(MPArating,idNumber,Title);
+	 }
+	 
+	 public double calcLateFees(int days)
+	 {
+		 return 2.0*days;
+	 }
+}
+
