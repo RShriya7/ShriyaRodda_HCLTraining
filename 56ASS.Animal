@@ -1,0 +1,29 @@
+package com.hcltech.DAY56ASSIGNMENTS;
+
+public abstract class Animal 
+{
+	int legs;
+
+	public int getLegs() {
+		return legs;
+	}
+
+	public void setLegs(int legs) {
+		this.legs = legs;
+	}
+
+	public Animal(int legs) {
+		super();
+		this.legs = legs;
+	}
+	
+	public void walk()
+	{
+		System.out.println("Walk method from animal class");
+	}
+	public abstract void eat();
+	
+	
+
+}
+

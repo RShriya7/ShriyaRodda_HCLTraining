@@ -1,0 +1,50 @@
+package com.hcltech.DAY4ASSIGNMENTS;
+abstract class Compartment
+{
+	abstract public void notice();
+}
+
+class FirstClass extends Compartment
+{
+	@Override
+	public void notice()
+	{
+		System.out.println("First Class");
+	}
+}
+
+class Ladies extends Compartment
+{
+	@Override
+	public void notice()
+	{
+		System.out.println("Ladies Compartment");
+	}
+}
+
+class General extends Compartment
+{
+	public void notice()
+	{
+		System.out.println("General Compartment");
+	}
+}
+
+class Luggage extends Compartment
+{
+	@Override
+	public void notice()
+	{
+		System.out.println("Luggage Class");
+	}
+}
+public class TestCompartmentSol2
+{
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+
+	}
+
+}
+

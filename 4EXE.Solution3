@@ -1,0 +1,228 @@
+package com.hcltech.DAY4ASSIGNMENTS;
+
+abstract class Shape 
+{
+    protected int x;
+    protected int y;
+ 
+     public Shape(int x, int y) 
+     {
+        this.x = x;
+        this.y = y;
+    }
+ 
+    public void move(int newX, int newY) {
+        this.x = newX;
+        this.y = newY;
+    }
+
+    public abstract void show();
+
+    @Override
+    public String toString() {
+        return "Shape at (" + x + ", " + y + ")";
+    }
+}
+
+
+class Line extends Shape {
+
+ private int x2;
+
+ private int y2;
+
+ public Line(int x1, int y1, int x2, int y2) {
+
+     super(x1, y1);
+
+     this.x2 = x2;
+
+     this.y2 = y2;
+
+ }
+
+ @Override
+
+ public void show() {
+
+     System.out.println("Line from (" + x + ", " + y + ") to (" + x2 + ", " + y2 + ")");
+
+ }
+
+ @Override
+
+ public String toString() {
+
+     return "Line from (" + x + ", " + y + ") to (" + x2 + ", " + y2 + ")";
+
+ }
+
+}
+
+
+
+class Circle extends Shape {
+
+ private int radius;
+
+ public Circle(int x, int y, int radius) {
+
+     super(x, y);
+
+     this.radius = radius;
+
+ }
+
+ @Override
+
+ public void show() {
+
+     System.out.println("Circle at (" + x + ", " + y + ") with radius " + radius);
+
+ }
+
+ @Override
+
+ public String toString() {
+
+     return "Circle at (" + x + ", " + y + ") with radius " + radius;
+
+ }
+
+}
+
+
+
+class Rectangle extends Shape {
+
+ private int width;
+
+ private int height;
+
+ public Rectangle(int x1, int y1, int x2, int y2) {
+
+     super(x1, y1);
+
+     this.width = Math.abs(x2 - x1);
+
+     this.height = Math.abs(y2 - y1);
+
+ }
+
+ @Override
+
+ public void show() {
+
+     System.out.println("Rectangle at (" + x + ", " + y + ") with width " + width + " and height " + height);
+
+ }
+
+ @Override
+
+ public String toString() {
+
+     return "Rectangle at (" + x + ", " + y + ") with width " + width + " and height " + height;
+
+ }
+
+}
+
+class PolyLine {
+
+ private Shape[] shapes;
+
+ private int count;
+
+ public PolyLine(int maxSize) {
+
+     shapes = new Shape[maxSize];
+
+     count = 0;
+
+ }
+
+ public void addShape(Shape shape) {
+
+     if (count < shapes.length) {
+
+         shapes[count++] = shape;
+
+     } else {
+
+         System.out.println("PolyLine is full. Cannot add more shapes.");
+
+     }
+
+ }
+
+ public void showAll() {
+
+     for (int i = 0; i < count; i++) {
+
+         shapes[i].show();
+
+     }
+
+ }
+
+}
+
+
+
+public class Solution3 {
+
+ public static void main(String[] args) {
+
+     Shape[] shapes = new Shape[10];
+
+     shapes[0] = new Line(1, 2, 5, 6);
+
+     shapes[1] = new Circle(10, 20, 15);
+
+     shapes[2] = new Rectangle(5, 5, 15, 10);
+
+     shapes[3] = new Circle(30, 40, 25);
+
+     shapes[4] = new Line(3, 8, 12, 4);
+
+     shapes[5] = new Rectangle(8, 12, 20, 18);
+
+     shapes[6] = new Circle(5, 5, 10);
+
+     shapes[7] = new Rectangle(2, 2, 8, 6);
+
+     shapes[8] = new Line(15, 30, 25, 15);
+
+     shapes[9] = new Line(10, 10, 30, 30);
+
+    
+     for (Shape shape : shapes) {
+
+         shape.show();
+
+     }
+
+
+
+     for (Shape shape : shapes) {
+
+         System.out.println(shape.toString());
+
+     }
+
+
+     PolyLine polyLine = new PolyLine(5);
+
+     polyLine.addShape(new Line(0, 0, 5, 5));
+
+     polyLine.addShape(new Circle(10, 10, 8));
+
+     polyLine.addShape(new Rectangle(20, 20, 30, 25));
+
+     polyLine.showAll();
+
+ }
+
+}
+
+

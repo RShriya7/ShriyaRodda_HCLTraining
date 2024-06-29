@@ -1,0 +1,10 @@
+package com.hcltech.DAY56ASSIGNMENTS;
+
+public interface Pet
+{
+	void setName(String n);
+	 String getName();
+	 
+	 public void play();
+}
+

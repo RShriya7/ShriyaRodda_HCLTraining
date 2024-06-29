@@ -1,0 +1,92 @@
+package com.hcltech.DAY4ASSIGNMENTS;
+
+abstract class Instrument
+{
+	abstract public void play();
+}
+
+class Piano extends Instrument
+{
+	@Override
+	public void play()
+	{
+		System.out.println("Piano is playing tan tan tan");
+	}
+}
+
+class Flute extends Instrument
+{
+	@Override
+	public void play()
+	{
+		System.out.println("Flute plays toot toot toot");
+	}
+}
+
+class Guitar extends Instrument
+{
+	@Override
+	public void play()
+	{
+		System.out.println("Guitar plays tin tin tin");
+	}
+}
+public class Solution1 
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Instrument[] instruments= new Instrument[10];
+		
+		instruments[0] = new Piano();
+        instruments[1] = new Flute();
+        instruments[2] = new Guitar();
+        instruments[3] = new Piano();
+        instruments[4] = new Guitar();
+        instruments[5] = new Flute();
+        instruments[6] = new Piano();
+        instruments[7] = new Guitar();
+        instruments[8] = new Flute();
+        instruments[9] = new Piano();
+        
+        for (int i = 0; i < instruments.length; i++) 
+        {
+            instruments[i].play();
+
+            if (instruments[i] instanceof Piano) 
+            {
+                System.out.println("Instrument at index " + i + " is a Piano");
+            } else if (instruments[i] instanceof Flute)
+            {
+                System.out.println("Instrument at index " + i + " is a Flute");
+            } else if (instruments[i] instanceof Guitar)
+            {
+                System.out.println("Instrument at index " + i + " is a Guitar");
+            }
+        }
+	}
+
+}
+
+
+/*List<Instrument> instruments=null;
+if(args.length!=0)
+{
+	instruments=new ArrayList();
+	for(int counter=0;counter<args.length-1;counter++)
+	{
+		switch(args[counter])
+		{
+		case "Piano":istruments.add(new Piano());break;
+		case "Guitar":instruments.add(new Guitar());break;
+		//...write all cases
+		}
+	}
+	
+	for(Instrument instrument: instruments)
+	{
+		instrument.play();
+	}
+}*/
+

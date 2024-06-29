@@ -1,0 +1,62 @@
+package com.hcltech.DAY3ASSIGNMENTS;
+
+import java.util.Scanner;
+
+class Account
+{
+	private  double balance;
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public Account(double balance) {
+		super();
+		this.balance = balance;
+	}
+	
+	public void deposit(double deposit)
+	{
+		//balance=balance+deposit;
+		System.out.println("The amount deposited:"+deposit);
+	}
+	
+	public void withdraw(double amount)
+	{
+		//balance=balance-amount;
+		System.out.println("The amount withdrawn:"+amount);
+	}
+}
+public class Solution4 
+{
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		Account acc= new Account(56784);
+		System.out.println("Balance before deposit and withdrawl:"+acc.getBalance());
+		
+		System.out.print("Enter amount to be deposited:");
+		double deposit=scanner.nextDouble();
+		double accBal= deposit+acc.getBalance();
+		System.out.println("Balance after deposit:"+accBal);
+		
+		System.out.println("Enter amount to be withdrawn:");
+		double withdrawn = scanner.nextDouble();
+		double accBal1= accBal-withdrawn;
+		System.out.println("Balance after withdrawl:"+accBal1);
+	
+		//acc.deposit(500);
+		//acc.withdraw(200);
+		
+		scanner.close();
+
+	}
+
+}
+

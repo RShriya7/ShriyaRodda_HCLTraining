@@ -1,0 +1,31 @@
+package com.hcltech.DAY4ASSIGNMENTS;
+
+ class A1 {
+
+    @Override
+
+    protected void finalize() throws Throwable {
+
+        System.out.println("Finalize method called");
+
+    }
+
+}
+ 
+
+public class Solution4 {
+
+    public static void main(String[] args) {
+
+        A1 a = new A1();
+
+        a = new A1();
+
+        a = new A1();
+ 
+        Runtime.getRuntime().gc();
+
+    }
+
+}
+ 

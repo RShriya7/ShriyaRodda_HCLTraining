@@ -1,0 +1,30 @@
+package com.hcltech.DAY11ASSIGNMENTS;
+
+
+
+import java.time.LocalTime;
+
+public class CurrentTime {
+ 
+	public static void main(String[] args) 
+	{
+		int totalTime = 20; 
+		int interval = 2; 
+ 
+		LocalTime startTime = LocalTime.now();
+		LocalTime endTime = startTime.plusSeconds(totalTime);
+ 
+		while (LocalTime.now().isBefore(endTime)) 
+		{
+			System.out.println("Current time: " + LocalTime.now());
+			try 
+			{
+				Thread.sleep(interval * 1000); 
+			} catch (InterruptedException e) 
+			{
+				System.err.println("Thread interrupted: " + e);
+			}
+		}
+		System.out.println("Done the program");
+	}
+}

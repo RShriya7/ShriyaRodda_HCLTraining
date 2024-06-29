@@ -1,0 +1,80 @@
+package com.hcltech.DAY3ASSIGNMENTS;
+
+class Vehicles
+{
+	private int Regno;
+	private String brand;
+	private double price;
+	private float mileage;
+	public Vehicles(int regno, String brand, double price, float mileage) {
+		super();
+		Regno = regno;
+		this.brand = brand;
+		this.price = price;
+		this.mileage = mileage;
+	}
+	public int getRegno() {
+		return Regno;
+	}
+	public void setRegno(int regno) {
+		Regno = regno;
+	}
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public float getMileage() {
+		return mileage;
+	}
+	public void setMileage(float mileage) {
+		this.mileage = mileage;
+	}
+	
+	public void displayDetails()
+	{
+		System.out.println("Registration NO:"+getRegno());
+		System.out.println("Brand:"+getBrand());
+		System.out.println("Price:"+getPrice());
+		System.out.println("Mileage:"+getMileage());
+		
+	}
+	
+}
+public class Solution3
+{
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Vehicles v1= new Vehicles(1234,"abc",5689,40.0f);
+		Vehicles v2= new Vehicles(2435,"def",78465,20.0f);
+		
+		if(v1.getMileage() > v2.getMileage())
+		{
+			System.out.println("vehicle1 has best mileage");
+		}
+		else
+		{
+			System.out.println("Vehicle2 has best mileage");
+		}
+		
+		if(v1.getPrice()> v2.getPrice())
+		{
+			System.out.println("Vehicle2 has lowest price");
+		}
+		else
+		{
+			System.out.println("Vehicle1 has lowest price");
+		}
+
+	}
+
+}
+
