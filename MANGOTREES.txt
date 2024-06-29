@@ -1,0 +1,194 @@
+﻿package com.multithreading.beans;
+ 
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+enum Typeofclimate {
+    TROPICAL, SUB_TROPICAL
+}
+
+class Location {
+    private String locationName;
+    protected Climate climate;
+    private int altitudeFromSeaLevel;
+    protected String season;
+
+    public Location(String locationName, Climate climate, int altitudeFromSeaLevel, String season) {
+        this.locationName = locationName;
+        this.climate = climate;
+        this.altitudeFromSeaLevel = altitudeFromSeaLevel;
+        this.season = season;
+    }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
+    }
+
+    public Climate getClimate() {
+        return climate;
+    }
+
+    public void setClimate(Climate climate) {
+        this.climate = climate;
+    }
+
+    public int getAltitudeFromSeaLevel() {
+        return altitudeFromSeaLevel;
+    }
+
+    public void setAltitudeFromSeaLevel(int altitudeFromSeaLevel) {
+        this.altitudeFromSeaLevel = altitudeFromSeaLevel;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
+    }
+
+    @Override
+    public String toString() {
+        return "Location [locationName=" + locationName + ", climate=" + climate + ", altitudeFromSeaLevel="
+                + altitudeFromSeaLevel + ", season=" + season + "]";
+    }
+}
+
+class Climate {
+    Typeofclimate typeOfClimate;
+    float humidity;
+    String rainFall;
+    String summer;
+
+    public Climate(Typeofclimate typeOfClimate, float humidity, String rainFall, String summer) {
+        this.typeOfClimate = typeOfClimate;
+        this.humidity = humidity;
+        this.rainFall = rainFall;
+        this.summer = summer;
+    }
+
+    @Override
+    public String toString() {
+        return "Climate [typeOfClimate=" + typeOfClimate + ", humidity=" + humidity + ", rainFall=" + rainFall
+                + ", summer=" + summer + "]";
+    }
+}
+
+class PlantingThread extends Thread {
+    @Override
+    public void run() {
+        System.out.println("Plantation in a row of mango saplings is 10-15 meters apart");
+    }
+}
+
+class Former {
+    private static boolean floweringPeriod;
+
+    public static void observeClimate(Location l) {
+        Climate climate = l.getClimate();
+        System.out.println("Observing climate for " + l.getLocationName());
+        System.out.println("Climate details: " + climate);
+        System.out.println("Altitude: " + l.getAltitudeFromSeaLevel());
+        System.out.println("Season: " + l.getSeason());
+
+        // Adjusted conditions based on the climate parameters
+        if (climate.typeOfClimate == Typeofclimate.TROPICAL &&
+            climate.humidity >= 1000.0f && climate.humidity <= 2000.0f &&
+            climate.rainFall.equalsIgnoreCase("good") &&
+            climate.summer.equalsIgnoreCase("dry") &&
+            l.getAltitudeFromSeaLevel() == 0 &&
+            l.getSeason().equalsIgnoreCase("khareef")) {
+            setFloweringPeriod(true);
+        } else {
+            System.out.println("Not a good time for germinating mango seeds!");
+            setFloweringPeriod(false);
+        }
+    }
+
+    public static boolean isFloweringPeriod() {
+        return floweringPeriod;
+    }
+
+    public static void setFloweringPeriod(boolean floweringPeriod) {
+        Former.floweringPeriod = floweringPeriod;
+    }
+
+    public void cultivateMangotrees() throws IOException {
+        System.out.println("1. Planting\n2. Fertilization\n3. Pruning and training\n4. Pest and disease management\n5. Harvesting\n6. Post-harvesting handling");
+        System.out.println("Choose your option (1-6):");
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        int reply = Integer.parseInt(bufferedReader.readLine());
+        switch (reply) {
+            case 1:
+                if (this.isFloweringPeriod()) {
+                    PlantingThread planting = new PlantingThread();
+                    planting.start();
+                    System.out.println("Planting started.");
+                    try {
+                        planting.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("Plantation completed.");
+                } else {
+                    System.out.println("Not a good time to plant");
+                }
+                break;
+            case 2:
+                Runnable fertilize = () -> {
+                    System.out.println("Fertilize...");
+                };
+                fertilize.run();
+                break;
+            case 3:
+                System.out.println("Pruning and training");
+                break;
+            case 4:
+                System.out.println("Pest and disease management");
+                break;
+            case 5:
+                System.out.println("Harvesting");
+                break;
+            case 6:
+                System.out.println("Post-harvesting");
+                break;
+            default:
+                System.out.println("\nInvalid option!!!");
+        }
+        bufferedReader.close();
+    }
+}
+
+public class Plantationdemo {
+
+    public static void main(String[] args) {
+        Former mangoFormer = new Former();
+
+        // Creating a location for Chennai
+        Climate chennaiClimate = new Climate(Typeofclimate.TROPICAL, 1400.0f, "good", "dry");
+        Location chennai = new Location("Chennai", chennaiClimate, 0, "khareef");
+
+       /* // Creating a location for Delhi
+        Climate delhiClimate = new Climate(Typeofclimate.SUB_TROPICAL, 1200.0f, "moderate", "wet");
+        Location delhi = new Location("Delhi", delhiClimate, 500, "summer");*/
+
+        mangoFormer.observeClimate(chennai);
+        System.out.println("Is it a flowering period for Chennai : " + mangoFormer.isFloweringPeriod());
+
+        /*mangoFormer.observeClimate(delhi);
+        System.out.println("Is it a flowering period for Delhi : " + mangoFormer.isFloweringPeriod());*/
+
+        try {
+            mangoFormer.cultivateMangotrees();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
