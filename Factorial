@@ -1,0 +1,39 @@
+package com.hcltech.DAY1ASSIGNMENTS;
+
+import java.util.Scanner;
+
+public class Factorial {
+
+	public static void main(String[] args) 
+	{
+		// TODO Auto-generated method stub
+		Scanner sc =new Scanner(System.in);
+		System.out.println("Enter the number:");
+		int n=sc.nextInt();
+		int prod = 1;
+		if(n==0  || n==1) 
+		{
+			System.out.println("The factorial is :"+prod);
+		}
+		else if(n>0)
+		{
+			do
+			{
+				prod=prod*n;
+				n--;
+				
+			}while(n>0);
+			
+			System.out.println("The factorial is :"+ prod);
+		}
+		else
+		{
+			System.out.println("The factorial exists for whole numbers only");
+		}
+		
+		sc.close();
+
+	}
+
+}
+
